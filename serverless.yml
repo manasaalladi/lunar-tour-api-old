@@ -15,6 +15,7 @@ custom:
   bundle:
     linting: false
   stage: dev
+  
 
 provider:
   name: aws
@@ -32,6 +33,7 @@ provider:
   # commit your env.yml.
   #
   environment:
+    queu_name: myqueue
     name_of_var: ${env:NAME_OF_VAR}
     tableDB: ${self:custom.tableDB}
     account: ${env:ACCOUNT}
