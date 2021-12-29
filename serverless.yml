@@ -16,7 +16,13 @@ custom:
     linting: false
   TableDB: ${self:custom.stage}-tableDB
   #stage: dev
-  
+ dynamodb:
+    stages:
+      - dev
+  stage: ${opt:stage, self:provider.stage}
+  region: ${opt:region, self:provider.region}
+  ListingsDB: ${self:custom.stage}-lunar-listings
+  BookingsDB: ${self:custom.stage}-lunar-bookings
 
 provider:
   name: aws
