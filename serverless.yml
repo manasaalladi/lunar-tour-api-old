@@ -10,26 +10,28 @@ plugins:
 # serverless-webpack configuration
 # Enable auto-packing of external modules
 custom:
-  serverless-offline:
-    port: 4000
-  bundle:
-    linting: false
-  TableDB: ${self:custom.stage}-tableDB
-  #stage: dev
- dynamodb:
+  dynamodb:
     stages:
       - dev
   stage: ${opt:stage, self:provider.stage}
   region: ${opt:region, self:provider.region}
   ListingsDB: ${self:custom.stage}-lunar-listings
   BookingsDB: ${self:custom.stage}-lunar-bookings
-
+  tableThroughputs:
+    prod: 1
+    default: 1
+  tableThroughput: ${self:custom.tableThroughputs.${self:custom.stage}, self:custom.tableThroughputs.default}
+  serverless-offline:
+    port: 4000
+  bundle:
+    linting: false
+    
 provider:
   name: aws
   runtime: nodejs12.x
   region: us-east-1
-  #stage: ${opt:stage, 'self:provider.stage'}
-  stage: ${opt:stage, 'dev'}
+  stage: ${opt:stage, 'self:provider.stage'}
+  #stage: ${opt:stage, 'dev'}
   TableDB: ${self:custom.stage}-tableDB
   tableThroughputs:
     prod: 1
