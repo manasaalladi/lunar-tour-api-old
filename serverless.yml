@@ -14,13 +14,14 @@ custom:
     port: 4000
   bundle:
     linting: false
-
+  stage: dev
+  
 
 provider:
   name: aws
   runtime: nodejs12.x
   region: us-east-1
-  stage: ${opt:stage, self:provider.stage, 'dev'}
+  stage: ${opt:stage, self:provider.stage}
   TableDB: ${self:custom.stage}-tableDB
   tableThroughputs:
     prod: 1
@@ -32,6 +33,7 @@ provider:
   # commit your env.yml.
   #
   environment:
+    queu_name: myqueu
     name_of_var: ${env:NAME_OF_VAR}
     tableDB: ${self:custom.tableDB}
     account: ${env:ACCOUNT}
