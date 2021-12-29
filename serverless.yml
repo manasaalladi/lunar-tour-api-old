@@ -12,9 +12,9 @@ plugins:
 custom:
   serverless-offline:
     port: 4000
-  stage: dev
   bundle:
     linting: false
+  stage: dev
 
 provider:
   name: aws
