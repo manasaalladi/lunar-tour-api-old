@@ -14,6 +14,7 @@ custom:
     port: 4000
   bundle:
     linting: false
+  TableDB: ${self:custom.stage}-tableDB
   #stage: dev
   
 
@@ -21,8 +22,8 @@ provider:
   name: aws
   runtime: nodejs12.x
   region: us-east-1
-  #stage: ${opt:stage, self:provider.stage}
-  stage: dev
+  #stage: ${opt:stage, 'self:provider.stage'}
+  stage: ${opt:stage, 'dev'}
   TableDB: ${self:custom.stage}-tableDB
   tableThroughputs:
     prod: 1
