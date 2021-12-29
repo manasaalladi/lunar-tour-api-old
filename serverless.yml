@@ -12,7 +12,7 @@ plugins:
 custom:
   serverless-offline:
     port: 4000
-    stage: dev
+  stage: dev
   bundle:
     linting: false
 
